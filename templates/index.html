@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}NetCrypt VPN - Secure Your Connection{% endblock %}
+
+{% block content %}
+<section class="hero" id="home">
+    <div class="content pt-5">
+        <h1>Browse privately<br>with a secure VPN</h1>
+        <p>Protect yourself on the Internet with a fast VPN anywhere in the world!</p>
+        <a href="{{ url_for('login') }}" class="trial-button">Get your free trial</a>
+        <small>In instants, no credit card required</small>
+    </div>
+    <div class="globe"></div>
+</section>
+
+<section class="features" id="features">
+    <h2>Powerful Features</h2>
+    <div class="feature-container">
+        <div class="feature-card">
+            <i class="bx bx-lock"></i>
+            <h3>AES-256 Encryption</h3>
+            <p>Your data is protected with AES-256 encryption, ensuring your online activities remain private.</p>
+        </div>
+        <div class="feature-card">
+            <i class="bx bx-globe"></i>
+            <h3>Global Servers</h3>
+            <p>Connect to servers around the world to access content and bypass geo-restrictions.</p>
+        </div>
+        <div class="feature-card">
+            <i class="bx bx-shield"></i>
+            <h3>Intrusion Detection</h3>
+            <p>Built-in intrusion detection system helps protect your connection from potential threats.</p>
+        </div>
+    </div>
+</section>
+
+<section class="resources" id="resources">
+    <div class="resource-container">
+        <h2 class="resource-title">Resources</h2>
+        <p class="resource-subtitle">Everything you need to stay informed and protected.</p>
+        <div class="resource-list">
+            <div class="resource-item">
+                <h3>Setup Guide</h3>
+                <p>Step-by-step instructions to get started on any device.</p>
+                <a href="#guide">Read Guide →</a>
+            </div>
+            <div class="resource-item">
+                <h3>Security Tips</h3>
+                <p>Best practices for keeping your internet usage safe and private.</p>
+                <a href="#">Learn More →</a>
+            </div>
+            <div class="resource-item">
+                <h3>Blog & News</h3>
+                <p>Latest updates on privacy, tech, and VPN advancements.</p>
+                <a href="#">Visit Blog →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="guide" id="guide">
+    <h2>Guide</h2>
+    <div class="guide-container">
+        <div class="guide-block">
+            <h2 class="text-start">Why Choose NetCrypt?</h2>
+            <ul class="guide-list">
+                <li><i class='bx bx-check'></i>Easy to use interface</li>
+                <li><i class='bx bx-check'></i>AES-256 encryption</li>
+                <li><i class='bx bx-check'></i>No-logs policy</li>
+                <li><i class='bx bx-check'></i>Fast connection speeds</li>
+                <li><i class='bx bx-check'></i>Compatible with OpenVPN</li>
+            </ul>
+        </div>
+        <div class="guide-block">
+            <h2 class="text-start">How It Works</h2>
+            <ol class="list-group-numbered text-start">
+                <li>Create an account with username and password</li>
+                <li>Choose a server location</li>
+                <li>Download your personalized <code>.ovpn</code> configuration file</li>
+                <li>Connect using OpenVPN with your credentials</li>
+                <li>Enjoy a secure and private internet connection</li>
+            </ol>
+        </div>
+    </div>
+</section>
+{% endblock %}

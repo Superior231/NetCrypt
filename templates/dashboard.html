@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - NetCrypt VPN{% endblock %}
+
+{% block content %}
+<div class="container pb-5">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Welcome, {{ username }}!</h3>
+                </div>
+                <div class="card-body">
+                    <h4>Create New VPN Configuration</h4>
+                    <form method="POST" action="{{ url_for('create_config') }}" class="row g-3">
+                        <div class="col-md-6">
+                            <label for="server_country" class="form-label">Select Server Location</label>
+                            <select class="form-select" id="server_country" name="server_country" required>
+                                <option value="" selected disabled>Choose a server location...</option>
+                                {% for code, server in servers.items() %}
+                                <option value="{{ code }}">{{ server.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary">Generate Configuration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Your VPN Configurations</h3>
+                </div>
+                <div class="card-body">
+                    {% if configs %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Configuration Name</th>
+                                    <th>Server Location</th>
+                                    <th>Created</th>
+                                    <th>Last Used</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for config in configs %}
+                                <tr>
+                                    <td>{{ config[1] }}</td>
+                                    <td>{{ config[2] }}</td>
+                                    <td>{{ config[3] }}</td>
+                                    <td>{{ config[4] if config[4] else 'Never' }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ url_for('download_config', config_name=config[1]) }}" class="btn btn-sm btn-success">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                            <form method="POST" action="{{ url_for('delete_config', config_id=config[0]) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this configuration?');">
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        You don't have any VPN configurations yet. Create one using the form above.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Connection Instructions</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <ol>
+                        <li>Download your .ovpn configuration file by clicking the Download button above.</li>
+                        <li>Install OpenVPN on your device if you haven't already:
+                            <ul>
+                                <li>Windows: <a href="https://openvpn.net/community-downloads/" target="_blank">OpenVPN Community</a></li>
+                                <li>Mac: <a href="https://tunnelblick.net/" target="_blank">Tunnelblick</a></li>
+                                <li>Linux: <code>sudo apt-get install openvpn</code> (Ubuntu/Debian)</li>
+                                <li>Android: <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn" target="_blank">OpenVPN Connect</a></li>
+                                <li>iOS: <a href="https://apps.apple.com/us/app/openvpn-connect/id590379981" target="_blank">OpenVPN Connect</a></li>
+                            </ul>
+                        </li>
+                        <li>Open your OpenVPN application and import the .ovpn file.</li>
+                        <li>When prompted, enter your NetCrypt username and password (the same ones you use to log in to this website).</li>
+                        <li>Click Connect to establish your secure VPN connection.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

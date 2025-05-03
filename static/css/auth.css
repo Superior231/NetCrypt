@@ -1,0 +1,151 @@
+* {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(ellipse at center, #1a1a2e, #0f0f1a);
+    color: white;
+}
+
+:root {
+    --primary-color: #7a5eff;
+    --background-input: #F0F0F0;
+    --input-color: #ACACAC;
+}
+
+
+/* Colors */
+a {
+    color: var(--primary-color) !important;
+}
+
+.primary-color {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-color) !important;
+}
+
+.btn-close {
+    border-color: var(--text-color) !important;
+}
+
+.border-secondary {
+    border-color: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Colors End */
+
+
+
+/* Text Size */
+h1 {
+    font-size: clamp(30px, 2.5vw, 35px);
+}
+
+h2 {
+    font-size: clamp(25px, 2.5vw, 30px);
+}
+
+h3 {
+    font-size: clamp(20px, 2.5vw, 25px);
+}
+
+h4 {
+    font-size: clamp(17px, 2.5vw, 20px);
+}
+
+h5 {
+    font-size: clamp(15px, 2.5vw, 17px);
+}
+
+h6,
+a,
+span,
+p {
+    font-size: clamp(13px, 2.5vw, 15px);
+}
+
+small {
+    font-size: clamp(8px, 2.5vw, 13px) !important;
+}
+
+/* Text Size End */
+
+
+.logo {
+    margin-left: 30px;
+}
+
+.pass-logo {
+    position: absolute;
+    height: 35px;
+    width: 38px;
+    background: transparent;
+    line-height: 55px;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 15px;
+    z-index: 999;
+}
+
+.content .pass-logo i.bx,
+.showPass {
+    color: var(--input-color);
+    position: relative;
+}
+
+.content input {
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 10px;
+    padding: 15px 10px 15px 45px;
+    outline: none;
+}
+
+.content input::placeholder {
+    color: var(--input-color);
+}
+
+input.form-control:focus,
+input.form-control:-webkit-autofill {
+    box-shadow: none;
+    border-color: var(--primary-color) !important;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+form .btn {
+    border-radius: 10px !important;
+    padding: 10px 15px;
+}
+
+#hero {
+    background-color: #121225;
+}
+
+@media (max-width: 767px) {
+    #hero {
+        display: none !important;
+    }
+
+    #logo-mobile {
+        display: flex !important;
+    }
+}

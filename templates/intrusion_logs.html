@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Intrusion Logs - NetCrypt VPN{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h3 class="mb-0">Intrusion Detection Logs</h3>
+    </div>
+    <div class="card-body">
+        {% if logs %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>IP Address</th>
+                        <th>Attempt Type</th>
+                        <th>Details</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ log[0] }}</td>
+                        <td>{{ log[1] if log[1] else 'N/A' }}</td>
+                        <td>{{ log[2] }}</td>
+                        <td>{{ log[3] }}</td>
+                        <td>{{ log[4] }}</td>
+                        <td>{{ log[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">No intrusion logs found.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
