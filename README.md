@@ -1,6 +1,6 @@
 # NetCrypt
 
-Protect yourself on the Internet with a fast VPN anywhere in the world!
+NetCrypt is a lightweight VPN application that encrypts all your data traffic with AES-256. With NetCrypt, your internet connection is protected from threats such as hacking and tracking, ensuring your online activities remain safe and private.
 
 ## Installation
 
