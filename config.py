@@ -1,19 +1,16 @@
-# config.py
-
 import os
 
-# Konfigurasi dasar
 SECRET_KEY = os.urandom(24)
 DEBUG = True
 
-# Konfigurasi database SQLite
+# SQLite Database Configuration
 DATABASE = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'database', 'netcrypt.db')
 
-# Konfigurasi OpenVPN
+# OpenVPN Configuration
 OPENVPN_BASE_CONFIG_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'openvpn')
 OPENVPN_CLIENT_CONFIG_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'client_configs')
 
-# Konfigurasi server OpenVPN
+# OpenVPN server Configuration
 VPN_SERVERS = {
     'id': {
         'name': 'Indonesia',
@@ -35,5 +32,5 @@ VPN_SERVERS = {
     }
 }
 
-# Konfigurasi AES-256
+# AES-256 Configuration
 AES_KEY_SIZE = 256

@@ -1,5 +1,3 @@
-# app.py
-
 import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file
@@ -139,9 +137,7 @@ def create_config():
     config_name = os.path.basename(config_path)
     
     # Get the encryption key from the certificate result
-    # In a real implementation, you would need to retrieve this from generate_vpn_config
-    # For now, we'll just store an empty or placeholder value
-    encryption_key = None  # In a real scenario, this would be cert_result['encryption_key']
+    encryption_key = None
     
     # Store configuration in database with the encryption key
     store_vpn_config(DATABASE, user_id, config_name, server_country, encryption_key)
