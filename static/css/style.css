@@ -1,6 +1,9 @@
 :root {
     --primary-color: #8e6fff;
     --secondary-color: #7a5eff;
+    --muted-color: #6c747f;
+    --card-color: #1a1a2f;
+    --card-border-color: #2c2c44;
 }
 
 body {
@@ -16,6 +19,10 @@ header {
     align-items: center;
     padding: 20px 50px;
     background: transparent;
+}
+
+a {
+    color: var(--primary-color);
 }
 
 .logo {
@@ -45,12 +52,49 @@ nav ul li a.active {
     opacity: 1;
 }
 
+nav .user-info .profile-image {
+    width: 30px !important;
+    height: 30px !important;
+    overflow: hidden;
+    border-radius: 50px !important;
+}
+
+nav .user-info .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username-container {
+    max-width: 200px;
+}
+
+.username-container .username {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buttons .login {
+    background-color: transparent;
+    border: 1px solid var(--card-border-color);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.buttons .login:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
 .buttons .login,
 .buttons .get-button,
 .trial-button {
     padding: 10px 18px;
     border-radius: 20px;
-    margin-left: 10px;
     text-decoration: none;
     color: white;
 }
@@ -144,8 +188,8 @@ nav ul li a.active {
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 20px;
     padding: 30px;
     width: 300px;
@@ -203,8 +247,8 @@ nav ul li a.active {
 
 .resource-item {
     flex: 1 1 300px;
-    background: #1a1a2f;
-    border: 1px solid #2c2c44;
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 12px;
     padding: 25px;
     text-align: left;
@@ -256,14 +300,23 @@ nav ul li a.active {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 30px;
     justify-content: space-between;
 }
 
+.guide-list {
+    text-align: start;
+}
+
+.guide-list li {
+    display: flex;
+    align-items: center;
+}
+
 .guide-block {
-    flex: 1 1 45%;
-    background-color: #1a1a2f;
-    border: 1px solid #2c2c44;
+    flex: 1 1 400px;
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 12px;
     padding: 30px;
     transition: transform 0.3s ease;
@@ -279,21 +332,20 @@ nav ul li a.active {
     color: var(--primary-color);
 }
 
-.guide-block ul,
-.guide-block ol {
+.guide-block ul {
     padding: 0px;
     margin: 0px;
+}
+
+.guide-block ul,
+.guide-block ol {
     font-size: 1rem;
     line-height: 1.8;
     color: #ccc;
-    list-style: none;
 }
 
-.guide-block li {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.guide-block ol {
+    padding-left: 20px;
 }
 
 .guide-block li i {
@@ -301,13 +353,150 @@ nav ul li a.active {
     font-size: 2rem;
 }
 
-.guide-block code {
+.code {
     background-color: #333;
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.9rem;
     color: var(--primary-color);
 }
+
+
+/* Dashboard */
+.card {
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 20px;
+    padding: 0px 30px 30px 30px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--card-border-color);
+    padding: 20px 0;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.card-body {
+    padding: 20px 0px;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.btn-danger {
+    border-radius: 10px !important;
+}
+
+.form-select {
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px;
+    color: white;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+table,
+tr td {
+    color: white !important;
+}
+
+/* datatables */
+.dataTables_length select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+input[type="search"] {
+    background-color: transparent;
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+
+input[type="search"]::placeholder {
+    color: var(--muted-color);
+}
+
+input[type="search"]:focus {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: none;
+}
+
+.pagination #ConfigTable_previous a,
+.pagination #ConfigTable_next a {
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    color: white;
+    padding: 10px 20px;
+}
+
+.pagination #ConfigTable_previous a {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.pagination #ConfigTable_next a {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.pagination #ConfigTable_previous:hover a,
+.pagination #ConfigTable_next:hover a {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.pagination .paginate_button.page-item.active a {
+    padding: 10px 20px;
+    background-color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.pagination .paginate_button.page-item.active a:hover {
+    background-color: var(--secondary-color) !important;
+    border: 1px solid var(--secondary-color) !important;
+}
+
+.pagination .paginate_button.page-item a {
+    padding: 10px 20px;
+    background-color: var(--card-color);
+    border: 1px solid var(--card-border-color);
+    color: white;
+    box-shadow: none;
+}
+
+.pagination .paginate_button.page-item a:hover {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+/* Dashboard End */
 
 
 .footer {
@@ -380,4 +569,21 @@ nav ul li a.active {
     top: -20px;
     right: 10%;
     transform: translate(50%, 50%);
+}
+
+
+/* SweetAlert */
+.sw-popup {
+    background-color: var(--card-color);
+}
+.sw-icon {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+.sw-title {
+    color: var(--primary-color);
+}
+
+.sw-text {
+    color: white;
 }

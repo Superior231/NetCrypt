@@ -7,7 +7,7 @@
     <div class="row mb-4">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header">
                     <h3 class="mb-0">Welcome, {{ username }}!</h3>
                 </div>
                 <div class="card-body">
@@ -34,46 +34,63 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header">
                     <h3 class="mb-0">Your VPN Configurations</h3>
                 </div>
                 <div class="card-body">
                     {% if configs %}
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Configuration Name</th>
-                                    <th>Server Location</th>
-                                    <th>Created</th>
-                                    <th>Last Used</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for config in configs %}
-                                <tr>
-                                    <td>{{ config[1] }}</td>
-                                    <td>{{ config[2] }}</td>
-                                    <td>{{ config[3] }}</td>
-                                    <td>{{ config[4] if config[4] else 'Never' }}</td>
-                                    <td>
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ url_for('download_config', config_name=config[1]) }}" class="btn btn-sm btn-success">
-                                                <i class="fas fa-download"></i> Download
-                                            </a>
-                                            <form method="POST" action="{{ url_for('delete_config', config_id=config[0]) }}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this configuration?');">
-                                                <button type="submit" class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
-                                            </form>
+                    <table class="table" id="ConfigTable" style="width: 100%;">
+                        <thead>
+                            <tr class="text-nowrap text-primary">
+                                <th>Configuration Name</th>
+                                <th>Server Location</th>
+                                <th>Created</th>
+                                <th>Last Used</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for config in configs %}
+                            <tr>
+                                <td class="text-break">{{ config[1] }}</td>
+                                <td>
+                                    {% if config[2] == 'id' %}
+                                        <div class="d-flex align-items-center gap-1">
+                                            <img src="{{ url_for('static', filename='img/id.png') }}" alt="Indonesia" class="me-2" width="24" height="24">
+                                            <span class="py-0 my-0">Indonesia</span>
                                         </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+                                    {% elif config[2] == 'sg' %}
+                                    <div class="d-flex align-items-center gap-1">
+                                        <img src="{{ url_for('static', filename='img/sg.png') }}" alt="Singapore" class="me-2" width="24" height="24">
+                                        <span class="py-0 my-0">Singapore</span>
+                                    </div>
+                                    {% elif config[2] == 'us' %}
+                                    <div class="d-flex align-items-center gap-1">
+                                        <img src="{{ url_for('static', filename='img/us.png') }}" alt="United States" class="me-2" width="24" height="24">
+                                        <span class="py-0 my-0">United States</span>
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td>{{ config[3] }}</td>
+                                <td>{{ config[4] if config[4] else 'Never' }}</td>
+                                <td>
+                                    <div class="btn-group d-flex justify-content-center align-items-center gap-2" role="group">
+                                        <a href="{{ url_for('download_config', config_name=config[1]) }}">
+                                            <button class="btn btn-sm btn-primary">
+                                                <i class='bx bxs-download'></i>
+                                            </button>
+                                        </a>
+                                        <form method="POST" action="{{ url_for('delete_config', config_id=config[0]) }}" class="d-inline" id="delete-config-form-{{ config[0] }}">
+                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteConfig('{{ config[0] }}')">
+                                                <i class='bx bxs-trash-alt'></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                     {% else %}
                     <div class="alert alert-info">
                         You don't have any VPN configurations yet. Create one using the form above.
@@ -87,12 +104,12 @@
     <div class="row mt-4">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header">
                     <h3 class="mb-0">Connection Instructions</h3>
                 </div>
-                <div class="card-body text-dark">
+                <div class="card-body">
                     <ol>
-                        <li>Download your .ovpn configuration file by clicking the Download button above.</li>
+                        <li>Download your <code class="code">.ovpn</code> configuration file by clicking the Download button above.</li>
                         <li>Install OpenVPN on your device if you haven't already:
                             <ul>
                                 <li>Windows: <a href="https://openvpn.net/community-downloads/" target="_blank">OpenVPN Community</a></li>
@@ -102,7 +119,7 @@
                                 <li>iOS: <a href="https://apps.apple.com/us/app/openvpn-connect/id590379981" target="_blank">OpenVPN Connect</a></li>
                             </ul>
                         </li>
-                        <li>Open your OpenVPN application and import the .ovpn file.</li>
+                        <li>Open your OpenVPN application and import the <code class="code">.ovpn</code> file.</li>
                         <li>When prompted, enter your NetCrypt username and password (the same ones you use to log in to this website).</li>
                         <li>Click Connect to establish your secure VPN connection.</li>
                     </ol>

@@ -3,27 +3,27 @@
 {% block title %}Intrusion Logs - NetCrypt VPN{% endblock %}
 
 {% block content %}
-<div class="card">
-    <div class="card-header bg-danger text-white">
-        <h3 class="mb-0">Intrusion Detection Logs</h3>
-    </div>
-    <div class="card-body">
-        {% if logs %}
-        <div class="table-responsive">
-            <table class="table table-striped">
+<div class="container pb-5">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Intrusion Detection Logs</h3>
+        </div>
+        <div class="card-body">
+            {% if logs %}
+            <table class="table table-striped text-light" id="IntrusionLogsTable" style="width: 100%;">
                 <thead>
-                    <tr>
+                    <tr class="text-primary text-nowrap">
                         <th>ID</th>
                         <th>Username</th>
                         <th>IP Address</th>
                         <th>Attempt Type</th>
-                        <th>Details</th>
+                        <th style="min-width: clamp(200px, 10vw, 300px);">Details</th>
                         <th>Timestamp</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for log in logs %}
-                    <tr>
+                    <tr class="text-light">
                         <td>{{ log[0] }}</td>
                         <td>{{ log[1] if log[1] else 'N/A' }}</td>
                         <td>{{ log[2] }}</td>
@@ -34,10 +34,10 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% else %}
+            <div class="alert alert-info">No intrusion logs found.</div>
+            {% endif %}
         </div>
-        {% else %}
-        <div class="alert alert-info">No intrusion logs found.</div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
