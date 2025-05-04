@@ -33,7 +33,7 @@ python app.py
 
 Server is running. Open url `http://127.0.0.1:5000/` in browser.
 
-## How It Works
+## How It Works?
 
 NetCrypt uses AES-256 encryption to encrypt your data traffic. It uses a symmetric key to encrypt and decrypt data, making it impossible for others to access your data.
 
