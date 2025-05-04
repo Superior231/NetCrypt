@@ -40,5 +40,10 @@ NetCrypt uses AES-256 encryption to encrypt your data traffic. It uses a symmetr
 1. Create an account with username and password
 2. Choose a server location
 3. Download your personalized `.ovpn` configuration file
-4. Connect using OpenVPN with your credentials
+4. Connect using OpenVPN with your credentials. You can install OpenVPN on your device as follows:
+   - Windows: [OpenVPN Community](https://openvpn.net/community-downloads/)
+   - Mac: [Tunnelblick](https://tunnelblick.net/)
+   - Linux: `sudo apt-get install openvpn` (Ubuntu/Debian)
+   - Android: [OpenVPN Connect](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
+   - iOS: [OpenVPN Connect](https://apps.apple.com/us/app/openvpn-connect/id590379981)
 5. Enjoy a secure and private internet connection
