@@ -47,3 +47,14 @@ NetCrypt uses AES-256 encryption to encrypt your data traffic. It uses a symmetr
    - Android: [OpenVPN Connect](https://play.google.com/store/apps/details?id=net.openvpn.openvpn)
    - iOS: [OpenVPN Connect](https://apps.apple.com/us/app/openvpn-connect/id590379981)
 5. Enjoy a secure and private internet connection
+
+## Progressive Web App (PWA) Support✅
+
+NetCrypt comes with full Progressive Web App (PWA) support, delivering a faster, more reliable, and engaging user experience.
+
+Key PWA Features in NetCrypt:
+- **Easy Installation**: Users can install NetCrypt directly from their browser to their device, just like a native app.
+- **Fast Loading**: Intelligent caching enables quicker load times and reduced data usage.
+- **Cross-Platform**: Works seamlessly on both desktop and mobile devices without needing app store downloads.
+
+With PWA technology, NetCrypt bridges the best of web and native apps, ensuring accessibility and performance wherever you are.
