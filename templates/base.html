@@ -156,6 +156,10 @@
                 deferredPrompt = null;
             }
         });
+
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.getElementById('getBtn').classList.add('d-none');
+        }
     </script>
 
 
