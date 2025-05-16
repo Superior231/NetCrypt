@@ -215,4 +215,4 @@ def intrusion_logs():
     return render_template('intrusion_logs.html', logs=logs)
 
 if __name__ == '__main__':
-    app.run(debug=DEBUG)
+    app.run(debug=DEBUG, host="0.0.0.0")
