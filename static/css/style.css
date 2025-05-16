@@ -101,6 +101,7 @@ nav .user-info .profile-image img {
 
 .buttons .get-button {
     background-color: var(--primary-color);
+    border: none;
 }
 
 .hero {

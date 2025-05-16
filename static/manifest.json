@@ -1,0 +1,24 @@
+{
+  "name": "NetCrypt VPN - Secure Your Connection",
+  "short_name": "NetCrypt VPN",
+  "version": "1.0.0",
+  "description": "NetCrypt is a lightweight VPN application that encrypts all your data traffic with AES-256. With NetCrypt, your internet connection is protected from threats such as hacking and tracking, ensuring your online activities remain safe and private.",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#1a1a2f",
+  "theme_color": "#1a1a2f",
+  "icons": [
+    {
+      "src": "/static/img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/static/img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
