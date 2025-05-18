@@ -44,8 +44,7 @@
                             <tr class="text-nowrap text-primary">
                                 <th>Configuration Name</th>
                                 <th>Server Location</th>
-                                <th>Created</th>
-                                <th>Last Used</th>
+                                <th>Created at</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -71,7 +70,6 @@
                                     </div>
                                     {% endif %}
                                 </td>
-                                <td>{{ config[3] }}</td>
                                 <td>{{ config[4] if config[4] else 'Never' }}</td>
                                 <td>
                                     <div class="btn-group d-flex justify-content-center align-items-center gap-2" role="group">
