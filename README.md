@@ -1,5 +1,6 @@
 # NetCrypt
 
+![Image](https://github.com/user-attachments/assets/7c0c76f8-96c9-4ffc-a16d-b80a44d8f5f4)
 NetCrypt is a lightweight VPN application that encrypts all your data traffic with AES-256. With NetCrypt, your internet connection is protected from threats such as hacking and tracking, ensuring your online activities remain safe and private.
 
 ## Installation
