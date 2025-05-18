@@ -18,24 +18,24 @@ def generate_vpn_config(server_info, username, client_configs_dir):
         client_configs_dir: Directory to store client configs
         
     Returns:
-        Path to the generated .ovpn file
+        Dictionary containing config_path and encryption_key
     """
     # Create client configs directory if it doesn't exist
     if not os.path.exists(client_configs_dir):
         os.makedirs(client_configs_dir)
-    
+
     # Generate unique config name
     config_name = f"{username}_{server_info['name'].lower().replace(' ', '_')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.ovpn"
     config_path = os.path.join(client_configs_dir, config_name)
-    
+
     # Generate certificate components
     cert_result = get_vpn_certificate_components(username, encrypt=True)
     encrypted_components = cert_result['encrypted_components']
     encryption_key = cert_result['encryption_key']
-    
+
     # Decrypt components for embedding in config file
     decrypted_components = decrypt_vpn_components(encrypted_components, encryption_key)
-    
+
     # Generate client configuration
     config_content = f"""# NetCrypt OpenVPN Client Configuration
 # Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -78,11 +78,12 @@ remote-cert-tls server
     # Write configuration to file
     with open(config_path, 'w') as f:
         f.write(config_content)
-    
-    # Store encryption key in database along with config info
-    # This would be implemented in the store_vpn_config function
-    
-    return config_path
+
+    # Return both config_path and encryption_key
+    return {
+        'config_path': config_path,
+        'encryption_key': encryption_key
+    }
 
 def store_vpn_config(db_path, user_id, config_name, server_country, encryption_key=None):
     """Store VPN configuration information in the database."""

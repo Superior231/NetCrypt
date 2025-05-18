@@ -124,24 +124,24 @@ def create_config():
     user_id = session.get('user_id')
     username = session.get('username')
     server_country = request.form.get('server_country')
-    
+
     if server_country not in VPN_SERVERS:
         flash('Invalid server selection', 'danger')
         return redirect(url_for('dashboard'))
-    
+
     server_info = VPN_SERVERS[server_country]
-    
+
     # Generate OpenVPN configuration
-    # The generate_vpn_config function returns the config_path
-    config_path = generate_vpn_config(server_info, username, OPENVPN_CLIENT_CONFIG_DIR)
+    config_result = generate_vpn_config(server_info, username, OPENVPN_CLIENT_CONFIG_DIR)
+    
+    # Extract config_path and encryption_key from result
+    config_path = config_result['config_path']
+    encryption_key = config_result['encryption_key']
     config_name = os.path.basename(config_path)
-    
-    # Get the encryption key from the certificate result
-    encryption_key = None
-    
+
     # Store configuration in database with the encryption key
     store_vpn_config(DATABASE, user_id, config_name, server_country, encryption_key)
-    
+
     flash('VPN configuration created successfully', 'success')
     return redirect(url_for('dashboard'))
 
